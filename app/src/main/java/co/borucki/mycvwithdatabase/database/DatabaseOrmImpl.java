@@ -92,4 +92,40 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     public void saveExperienceBranch(ExperienceBranch experienceBranch) {
         mExperienceBranchDao.createOrUpdate(experienceBranch);
     }
+
+    @Override
+    public void saveExperienceCompany(ExperienceCompany experienceCompany) {
+        mExperienceCompanyDao.createOrUpdate(experienceCompany);
+    }
+
+    @Override
+    public void saveExperienceCompany(List<ExperienceCompany> experienceCompanyList) {
+        for (ExperienceCompany experienceCompany : experienceCompanyList) {
+            mExperienceCompanyDao.createOrUpdate(experienceCompany);
+        }
+    }
+
+    @Override
+    public void saveExperiencePeriod(ExperiencePeriod experiencePeriod) {
+        mExperiencePeriodDao.createOrUpdate(experiencePeriod);
+    }
+
+    @Override
+    public void saveExperiencePeriod(List<ExperiencePeriod> experiencePeriodList) {
+        for (ExperiencePeriod experiencePeriod : experiencePeriodList) {
+            mExperiencePeriodDao.createOrUpdate(experiencePeriod);
+        }
+    }
+
+    @Override
+    public void saveExperienceProject(ExperienceProject experienceProject) {
+        mExperienceProjectDao.createOrUpdate(experienceProject);
+    }
+
+    @Override
+    public void saveExperienceProject(List<ExperienceProject> experienceProjectList) {
+        for (ExperienceProject experienceProject : experienceProjectList) {
+            mExperienceProjectDao.createOrUpdate(experienceProject);
+        }
+    }
 }

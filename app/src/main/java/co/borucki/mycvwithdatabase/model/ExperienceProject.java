@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "experienceProject")
 public class ExperienceProject {
-    @DatabaseField(columnName = "id", index = true)
+    @DatabaseField(columnName = "id", id = true)
     private int id;
     @DatabaseField(columnName = "descriptionPl")
     private String descriptionPl;
