@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.mycvwithdatabase.dto.EducationDTO;
+import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
 import co.borucki.mycvwithdatabase.dto.HobbiesDTO;
 import co.borucki.mycvwithdatabase.dto.MailUserAuthorizationDTO;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
 import co.borucki.mycvwithdatabase.dto.SkillDTO;
 import co.borucki.mycvwithdatabase.model.Education;
+import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.Hobbies;
 import co.borucki.mycvwithdatabase.model.MailUserAuthorization;
 import co.borucki.mycvwithdatabase.model.PersonalData;
@@ -71,20 +73,20 @@ public class Mapper {
         return resultList;
     }
 
-    public static List<Skill> fromMySkillsDTOToMySkills(List<SkillDTO> skillDTOs) {
+    public static List<Skill> fromSkillsDTOToSkills(List<SkillDTO> skillDTOs) {
         List<Skill> resultList = new ArrayList<>();
         for (SkillDTO skillDTO : skillDTOs) {
             resultList.add(new Skill(skillDTO.getId()
-            , skillDTO.getType()
-            , skillDTO.getNamePl()
-            , skillDTO.getNameEn()
-            , skillDTO.getLevel()));
+                    , skillDTO.getType()
+                    , skillDTO.getNamePl()
+                    , skillDTO.getNameEn()
+                    , skillDTO.getLevel()));
         }
 
         return resultList;
     }
 
-    public static Skill fromMySkillsDTOToMySkills(SkillDTO skillDTO) {
+    public static Skill fromSkillsDTOToSkills(SkillDTO skillDTO) {
         return new Skill(skillDTO.getId()
                 , skillDTO.getType()
                 , skillDTO.getNamePl()
@@ -93,14 +95,13 @@ public class Mapper {
     }
 
 
-
     public static List<Hobbies> fromHobbiesDTOToHobbies(List<HobbiesDTO> hobbiesDTOs) {
         List<Hobbies> hobbies = new ArrayList<>();
         for (HobbiesDTO hobbiesDTO : hobbiesDTOs) {
             hobbies.add(new Hobbies(hobbiesDTO.getId()
-            , hobbiesDTO.getNamePl()
-            , hobbiesDTO.getNameEn()
-            , hobbiesDTO.getLogo()));
+                    , hobbiesDTO.getNamePl()
+                    , hobbiesDTO.getNameEn()
+                    , hobbiesDTO.getLogo()));
         }
 
         return hobbies;
@@ -113,4 +114,24 @@ public class Mapper {
                 , mailUserAuthorizationDTO.getMailSmtpPort()
                 , mailUserAuthorizationDTO.getMailTo());
     }
+
+    public static List<ExperienceBranch> fromExperienceBranchDTOToExperienceBranch(List<ExperienceBranchDTO> experienceBranchDTOs) {
+        List<ExperienceBranch> experienceBranches = new ArrayList<>();
+        for (ExperienceBranchDTO experienceBranchDTO : experienceBranchDTOs) {
+            experienceBranches.add(new ExperienceBranch(experienceBranchDTO.getId()
+                    , experienceBranchDTO.getBranchPl()
+                    , experienceBranchDTO.getBranchEn()));
+        }
+        return experienceBranches;
+    }
+
+    public static ExperienceBranch fromExperienceBranchDTOToExperienceBranch(ExperienceBranchDTO experienceBranchDTO) {
+
+        return new ExperienceBranch(experienceBranchDTO.getId()
+                , experienceBranchDTO.getBranchPl()
+                , experienceBranchDTO.getBranchEn());
+
+
+    }
+
 }

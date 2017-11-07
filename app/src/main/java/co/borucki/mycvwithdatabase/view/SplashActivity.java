@@ -36,6 +36,7 @@ import butterknife.OnClick;
 import co.borucki.mycvwithdatabase.LocaleHelper;
 import co.borucki.mycvwithdatabase.R;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllEducation;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceBranch;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
 import co.borucki.mycvwithdatabase.dto.mappers.Mapper;
 import co.borucki.mycvwithdatabase.model.PersonalData;
@@ -130,8 +131,8 @@ public class SplashActivity extends AppCompatActivity {
         window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
-        final EditText password =  dialogView.findViewById(R.id.security_password);
-        final EditText userEmail =  dialogView.findViewById(R.id.userEmail);
+        final EditText password = dialogView.findViewById(R.id.security_password);
+        final EditText userEmail = dialogView.findViewById(R.id.userEmail);
         userEmail.setText(mAccessPermission.getAccessMail());
         userEmail.setEnabled(false);
         builder.setView(dialogView)
@@ -175,7 +176,7 @@ public class SplashActivity extends AppCompatActivity {
 
         dialogView.setMinimumWidth((int) (displayRectangle.width() * 0.9f));
 
-        final EditText userEmail =  dialogView.findViewById(R.id.user_email);
+        final EditText userEmail = dialogView.findViewById(R.id.user_email);
 
         builder.setView(dialogView)
                 .setPositiveButton(R.string.splash_activity_register, new DialogInterface.OnClickListener() {
@@ -226,7 +227,8 @@ public class SplashActivity extends AppCompatActivity {
 
     @OnClick(R.id.splash_counter)
     public void skipCounter() {
-        startActivity(new Intent(this, MainActivity.class));
+        navigateToMenuScreen();
+
     }
 
     private class CheckPassword extends AsyncTask<String, Void, String> {
@@ -393,8 +395,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void importDataInBackground() {
-        GetAllEducation getAllEducation = new GetAllEducation();
-        getAllEducation.execute();
+        new GetAllEducation().execute();
+        new GetAllExperienceBranch().execute();
     }
 
 
