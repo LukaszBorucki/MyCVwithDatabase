@@ -5,12 +5,18 @@ import java.util.List;
 
 import co.borucki.mycvwithdatabase.dto.EducationDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
+import co.borucki.mycvwithdatabase.dto.ExperienceCompanyDTO;
+import co.borucki.mycvwithdatabase.dto.ExperiencePeriodDTO;
+import co.borucki.mycvwithdatabase.dto.ExperienceProjectDTO;
 import co.borucki.mycvwithdatabase.dto.HobbiesDTO;
 import co.borucki.mycvwithdatabase.dto.MailUserAuthorizationDTO;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
 import co.borucki.mycvwithdatabase.dto.SkillDTO;
 import co.borucki.mycvwithdatabase.model.Education;
 import co.borucki.mycvwithdatabase.model.ExperienceBranch;
+import co.borucki.mycvwithdatabase.model.ExperienceCompany;
+import co.borucki.mycvwithdatabase.model.ExperiencePeriod;
+import co.borucki.mycvwithdatabase.model.ExperienceProject;
 import co.borucki.mycvwithdatabase.model.Hobbies;
 import co.borucki.mycvwithdatabase.model.MailUserAuthorization;
 import co.borucki.mycvwithdatabase.model.PersonalData;
@@ -134,4 +140,64 @@ public class Mapper {
 
     }
 
+    public static List<ExperienceCompany> fromExperienceCompanyDTOToExperienceCompany(List<ExperienceCompanyDTO> companyDTOS) {
+        List<ExperienceCompany> experienceCompanies = new ArrayList<>();
+        for (ExperienceCompanyDTO companyDTO : companyDTOS) {
+            experienceCompanies.add(
+                    new ExperienceCompany(companyDTO.getId()
+                            , companyDTO.getBranchId()
+                            , companyDTO.getName()
+                            , companyDTO.getLogotype())
+            );
+        }
+        return experienceCompanies;
+    }
+
+    public static ExperienceCompany fromExperienceCompanyDTOToExperienceCompany(ExperienceCompanyDTO experienceCompanyDTO) {
+        return new ExperienceCompany(experienceCompanyDTO.getId()
+                , experienceCompanyDTO.getBranchId()
+                , experienceCompanyDTO.getName()
+                , experienceCompanyDTO.getLogotype());
+    }
+
+    public static List<ExperiencePeriod> fromExperiencePeriodDTOToExperiencePeriod(List<ExperiencePeriodDTO> experiencePeriodDTOS) {
+        List<ExperiencePeriod> experiencePeriods = new ArrayList<>();
+        for (ExperiencePeriodDTO experiencePeriodDTO : experiencePeriodDTOS) {
+            experiencePeriods.add(new ExperiencePeriod(experiencePeriodDTO.getId()
+                    , experiencePeriodDTO.getPeriodFrom()
+                    , experiencePeriodDTO.getPeriodTo()
+                    , experiencePeriodDTO.getPosition()
+                    , experiencePeriodDTO.getLanguage()
+                    , experiencePeriodDTO.getCompanyId()));
+        }
+        return experiencePeriods;
+    }
+
+    public static ExperiencePeriod fromExperiencePeriodDTOToExperiencePeriod(ExperiencePeriodDTO experiencePeriodDTO) {
+        return new ExperiencePeriod(experiencePeriodDTO.getId()
+                , experiencePeriodDTO.getPeriodFrom()
+                , experiencePeriodDTO.getPeriodTo()
+                , experiencePeriodDTO.getPosition()
+                , experiencePeriodDTO.getLanguage()
+                , experiencePeriodDTO.getCompanyId());
+
+    }
+
+    public static List<ExperienceProject> fromExperienceProjectDTOToExperienceProject(List<ExperienceProjectDTO> experienceProjectDTOS) {
+        List<ExperienceProject> experienceProjects = new ArrayList<>();
+        for (ExperienceProjectDTO experienceProjectDTO : experienceProjectDTOS) {
+            experienceProjects.add(new ExperienceProject(experienceProjectDTO.getId()
+                    , experienceProjectDTO.getDescriptionPl()
+                    , experienceProjectDTO.getDescriptionEn()
+                    , experienceProjectDTO.getCompanyId()));
+        }
+        return experienceProjects;
+    }
+
+    public static ExperienceProject fromExperienceProjectDTOToExperienceProject(ExperienceProjectDTO experienceProjectDTO) {
+        return new ExperienceProject(experienceProjectDTO.getId()
+                    , experienceProjectDTO.getDescriptionPl()
+                    , experienceProjectDTO.getDescriptionEn()
+                    , experienceProjectDTO.getCompanyId());
+    }
 }

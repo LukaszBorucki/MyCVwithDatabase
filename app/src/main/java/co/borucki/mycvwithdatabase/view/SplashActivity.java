@@ -37,6 +37,9 @@ import co.borucki.mycvwithdatabase.LocaleHelper;
 import co.borucki.mycvwithdatabase.R;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllEducation;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceBranch;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceCompany;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperiencePeriod;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceProject;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
 import co.borucki.mycvwithdatabase.dto.mappers.Mapper;
 import co.borucki.mycvwithdatabase.model.PersonalData;
@@ -397,6 +400,9 @@ public class SplashActivity extends AppCompatActivity {
     private void importDataInBackground() {
         new GetAllEducation().execute();
         new GetAllExperienceBranch().execute();
+        new GetAllExperienceCompany().execute();
+        new GetAllExperiencePeriod().execute();
+        new GetAllExperienceProject().execute();
     }
 
 
