@@ -5,7 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "skill")
 public class Skill {
-    @DatabaseField(columnName = "id", index = true)
+    @DatabaseField(columnName = "id", id = true)
     private int id;
     @DatabaseField(columnName = "type")
     private String type;

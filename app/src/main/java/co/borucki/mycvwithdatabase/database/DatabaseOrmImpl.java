@@ -128,4 +128,40 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
             mExperienceProjectDao.createOrUpdate(experienceProject);
         }
     }
+
+    @Override
+    public void saveForeignLanguage(List<ForeignLanguage> foreignLanguageList) {
+        for (ForeignLanguage foreignLanguage : foreignLanguageList) {
+            mForeignLanguageDao.createOrUpdate(foreignLanguage);
+        }
+    }
+
+    @Override
+    public void saveForeignLanguage(ForeignLanguage foreignLanguage) {
+        mForeignLanguageDao.createOrUpdate(foreignLanguage);
+    }
+
+    @Override
+    public void saveHobbies(List<Hobbies> hobbiesList) {
+        for (Hobbies hobbies : hobbiesList) {
+            mHobbiesDao.createOrUpdate(hobbies);
+        }
+    }
+
+    @Override
+    public void saveHobbies(Hobbies hobbies) {
+        mHobbiesDao.createOrUpdate(hobbies);
+    }
+
+    @Override
+    public void saveSkill(List<Skill> skillList) {
+        for (Skill skill : skillList) {
+            mSkillDao.createOrUpdate(skill);
+        }
+    }
+
+    @Override
+    public void saveSkill(Skill skill) {
+        mSkillDao.createOrUpdate(skill);
+    }
 }

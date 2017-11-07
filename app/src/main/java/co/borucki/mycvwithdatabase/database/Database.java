@@ -8,6 +8,9 @@ import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.ExperienceCompany;
 import co.borucki.mycvwithdatabase.model.ExperiencePeriod;
 import co.borucki.mycvwithdatabase.model.ExperienceProject;
+import co.borucki.mycvwithdatabase.model.ForeignLanguage;
+import co.borucki.mycvwithdatabase.model.Hobbies;
+import co.borucki.mycvwithdatabase.model.Skill;
 
 public interface Database {
 
@@ -30,6 +33,18 @@ public interface Database {
     void saveExperienceProject(ExperienceProject experienceProject);
 
     void saveExperienceProject(List<ExperienceProject> experienceProjectList);
+
+    void saveForeignLanguage(List<ForeignLanguage> foreignLanguageList);
+
+    void saveForeignLanguage(ForeignLanguage foreignLanguage);
+
+    void saveHobbies(List<Hobbies> hobbiesList);
+
+    void saveHobbies(Hobbies hobbies);
+
+    void saveSkill(List<Skill> skillList);
+
+    void saveSkill(Skill skill);
 
 
 }

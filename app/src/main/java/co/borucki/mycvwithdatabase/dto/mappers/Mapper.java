@@ -8,6 +8,7 @@ import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceCompanyDTO;
 import co.borucki.mycvwithdatabase.dto.ExperiencePeriodDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceProjectDTO;
+import co.borucki.mycvwithdatabase.dto.ForeignLanguageDTO;
 import co.borucki.mycvwithdatabase.dto.HobbiesDTO;
 import co.borucki.mycvwithdatabase.dto.MailUserAuthorizationDTO;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
@@ -17,6 +18,7 @@ import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.ExperienceCompany;
 import co.borucki.mycvwithdatabase.model.ExperiencePeriod;
 import co.borucki.mycvwithdatabase.model.ExperienceProject;
+import co.borucki.mycvwithdatabase.model.ForeignLanguage;
 import co.borucki.mycvwithdatabase.model.Hobbies;
 import co.borucki.mycvwithdatabase.model.MailUserAuthorization;
 import co.borucki.mycvwithdatabase.model.PersonalData;
@@ -196,8 +198,42 @@ public class Mapper {
 
     public static ExperienceProject fromExperienceProjectDTOToExperienceProject(ExperienceProjectDTO experienceProjectDTO) {
         return new ExperienceProject(experienceProjectDTO.getId()
-                    , experienceProjectDTO.getDescriptionPl()
-                    , experienceProjectDTO.getDescriptionEn()
-                    , experienceProjectDTO.getCompanyId());
+                , experienceProjectDTO.getDescriptionPl()
+                , experienceProjectDTO.getDescriptionEn()
+                , experienceProjectDTO.getCompanyId());
+    }
+
+    public static List<ForeignLanguage> fromForeignLanguageDTOToForeignLanguage(List<ForeignLanguageDTO> foreignLanguageDTOS) {
+        List<ForeignLanguage> foreignLanguages = new ArrayList<>();
+        for (ForeignLanguageDTO foreignLanguageDTO : foreignLanguageDTOS) {
+            foreignLanguages.add(new ForeignLanguage(foreignLanguageDTO.getId()
+                    , foreignLanguageDTO.getNamePl()
+                    , foreignLanguageDTO.getNameEn()
+                    , foreignLanguageDTO.getLevel()
+                    , foreignLanguageDTO.getLogo()));
+        }
+        return foreignLanguages;
+    }
+
+    public static ForeignLanguage fromForeignLanguageDTOToForeignLanguage(ForeignLanguageDTO foreignLanguageDTO) {
+        return new ForeignLanguage(foreignLanguageDTO.getId()
+                , foreignLanguageDTO.getNamePl()
+                , foreignLanguageDTO.getNameEn()
+                , foreignLanguageDTO.getLevel()
+                , foreignLanguageDTO.getLogo());
+    }
+
+    public static List<Skill> fromSkillDTOToSkill(List<SkillDTO> skillDTOS) {
+        List<Skill> skills = new ArrayList<>();
+
+        for (SkillDTO skillDTO : skillDTOS) {
+            skills.add(new Skill(skillDTO.getId()
+                    , skillDTO.getType()
+                    , skillDTO.getNamePl()
+                    , skillDTO.getNameEn()
+                    , skillDTO.getLevel()));
+        }
+
+        return skills;
     }
 }

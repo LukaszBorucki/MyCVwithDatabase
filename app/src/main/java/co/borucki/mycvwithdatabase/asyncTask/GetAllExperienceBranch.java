@@ -9,10 +9,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.List;
 
-import co.borucki.mycvwithdatabase.dto.EducationDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
 import co.borucki.mycvwithdatabase.dto.mappers.Mapper;
-import co.borucki.mycvwithdatabase.repository.EducationRepositoryImpl;
 import co.borucki.mycvwithdatabase.repository.ExperienceBranchRepository;
 import co.borucki.mycvwithdatabase.repository.ExperienceBranchRepositoryImpl;
 import co.borucki.mycvwithdatabase.security.ApplicationAccessPermission;
