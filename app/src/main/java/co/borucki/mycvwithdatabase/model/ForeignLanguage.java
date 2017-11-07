@@ -1,11 +1,19 @@
 package co.borucki.mycvwithdatabase.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "foreignLanguage")
 public class ForeignLanguage {
+    @DatabaseField(columnName = "id", id = true)
     private int id;
+    @DatabaseField(columnName = "namePl")
     private String namePl;
+    @DatabaseField(columnName = "nameEn")
     private String nameEn;
+    @DatabaseField(columnName = "level")
     private String level;
+    @DatabaseField(columnName = "logo")
     private String logo;
 
     public ForeignLanguage() {

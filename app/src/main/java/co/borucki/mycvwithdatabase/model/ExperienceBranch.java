@@ -1,10 +1,16 @@
 package co.borucki.mycvwithdatabase.model;
 
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "experienceBranch")
 public class ExperienceBranch {
+    @DatabaseField(columnName = "id", id = true)
     private int id;
+    @DatabaseField(columnName = "branchPl")
     private String branchPl;
+    @DatabaseField(columnName = "branchEn")
     private String branchEn;
 
     public ExperienceBranch() {

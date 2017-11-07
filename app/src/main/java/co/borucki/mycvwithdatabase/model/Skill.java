@@ -1,10 +1,19 @@
 package co.borucki.mycvwithdatabase.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "skill")
 public class Skill {
+    @DatabaseField(columnName = "id", id = true)
     private int id;
+    @DatabaseField(columnName = "type")
     private String type;
+    @DatabaseField(columnName = "namePl")
     private String namePl;
+    @DatabaseField(columnName = "nameEn")
     private String nameEn;
+    @DatabaseField(columnName = "level")
     private int level;
 
     public Skill() {
