@@ -2,4 +2,10 @@
     <string name="app_name">Lukasz Borucki - CV</string>
     <string name="phone_no">+48 123 456 789</string>
     <string name="name_and_surname"><![CDATA[Name & Surname]]></string>
+    <string name="splash_activity_register">Register</string>
+    <string name="splash_skip">skip for: %d s</string>
+    <string name="splash_data_dialog_user_email">E-mail</string>
+    <string name="splash_data_dialog_password">Password</string>
+    <string name="dialog_info">Info:</string>
+    <string name="dialog_info_text">After registration on your e-mail address I will send password to MyCV application.\\nPlease be patient email with the password I send once a day.</string>
 </resources>

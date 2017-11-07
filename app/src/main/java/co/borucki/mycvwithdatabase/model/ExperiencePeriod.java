@@ -1,12 +1,21 @@
 package co.borucki.mycvwithdatabase.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "experiencePeriod")
 public class ExperiencePeriod {
+    @DatabaseField(columnName = "id", index = true)
     private int id;
+    @DatabaseField(columnName = "periodFrom")
     private String periodFrom;
+    @DatabaseField(columnName = "periodTo")
     private String periodTo;
+    @DatabaseField(columnName = "position")
     private String position;
+    @DatabaseField(columnName = "language")
     private String language;
+    @DatabaseField(columnName = "companyId")
     private int companyId;
 
     public ExperiencePeriod() {
