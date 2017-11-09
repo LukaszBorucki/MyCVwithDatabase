@@ -9,4 +9,8 @@ public interface ExperienceProjectRepository {
     void saveExperienceProject(ExperienceProject experienceProject);
 
     void saveExperienceProject(List<ExperienceProject> experienceProjectList);
+
+    List<ExperienceProject> getAllByCompanyId(int id);
+
+    void truncate();
 }

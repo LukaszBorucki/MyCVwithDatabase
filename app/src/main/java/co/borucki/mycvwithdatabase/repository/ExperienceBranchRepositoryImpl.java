@@ -28,4 +28,14 @@ public class ExperienceBranchRepositoryImpl implements ExperienceBranchRepositor
     public void saveExperienceBranch(List<ExperienceBranch> experienceBranchList) {
         mDatabase.saveExperienceBranch(experienceBranchList);
     }
+
+    @Override
+    public ExperienceBranch getBranchByBranchId(int branchId) {
+        return mDatabase.getBranchByBranchId(branchId);
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceBranch();
+    }
 }

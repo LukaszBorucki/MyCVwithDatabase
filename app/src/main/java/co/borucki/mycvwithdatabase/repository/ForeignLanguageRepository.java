@@ -9,4 +9,8 @@ public interface ForeignLanguageRepository {
     void saveForeignLanguage(List<ForeignLanguage> foreignLanguageList);
 
     void saveForeignLanguage(ForeignLanguage foreignLanguage);
+
+    List<ForeignLanguage> getAllForeignLanguage();
+
+    void truncate();
 }

@@ -1,5 +1,6 @@
 package co.borucki.mycvwithdatabase.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -13,13 +14,13 @@ public class ForeignLanguage {
     private String nameEn;
     @DatabaseField(columnName = "level")
     private String level;
-    @DatabaseField(columnName = "logo")
-    private String logo;
+    @DatabaseField(columnName = "logo", dataType = DataType.SERIALIZABLE)
+    private byte[] logo;
 
     public ForeignLanguage() {
     }
 
-    public ForeignLanguage(int id, String namePl, String nameEn, String level, String logo) {
+    public ForeignLanguage(int id, String namePl, String nameEn, String level, byte[] logo) {
         this.id = id;
         this.namePl = namePl;
         this.nameEn = nameEn;
@@ -59,11 +60,11 @@ public class ForeignLanguage {
         this.level = level;
     }
 
-    public String getLogo() {
+    public byte[] getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(byte[] logo) {
         this.logo = logo;
     }
 }

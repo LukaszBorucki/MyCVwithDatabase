@@ -31,4 +31,19 @@ public class SkillRepositoryImpl implements SkillRepository {
     public void saveSkill(Skill skill) {
         mDatabase.saveSkill(skill);
     }
+
+    @Override
+    public List<Skill> getAllSkillTechnology() {
+        return mDatabase.getAllSkillTechnology();
+    }
+
+    @Override
+    public List<Skill> getAllSkillTraits() {
+        return mDatabase.getAllSkillTraits();
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceSkill();
+    }
 }

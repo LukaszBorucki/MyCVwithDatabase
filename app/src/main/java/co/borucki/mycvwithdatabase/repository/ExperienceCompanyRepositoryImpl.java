@@ -29,4 +29,14 @@ public class ExperienceCompanyRepositoryImpl implements ExperienceCompanyReposit
     public void saveExperienceCompany(List<ExperienceCompany> experienceCompanyList) {
         mDatabase.saveExperienceCompany(experienceCompanyList);
     }
+
+    @Override
+    public List<ExperienceCompany> getAllExperienceCompany() {
+        return mDatabase.getAllExperienceCompany();
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceCompany();
+    }
 }

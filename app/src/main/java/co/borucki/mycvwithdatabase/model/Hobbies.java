@@ -1,5 +1,6 @@
 package co.borucki.mycvwithdatabase.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -11,13 +12,13 @@ public class Hobbies {
     private String namePl;
     @DatabaseField(columnName = "nameEn")
     private String nameEn;
-    @DatabaseField(columnName = "logo")
-    private String logo;
+    @DatabaseField(columnName = "logo", dataType = DataType.SERIALIZABLE)
+    private byte[] logo;
 
     public Hobbies() {
     }
 
-    public Hobbies(int id, String namePl, String nameEn, String logo) {
+    public Hobbies(int id, String namePl, String nameEn, byte[] logo) {
         this.id = id;
         this.namePl = namePl;
         this.nameEn = nameEn;
@@ -48,11 +49,11 @@ public class Hobbies {
         this.nameEn = nameEn;
     }
 
-    public String getLogo() {
+    public byte[] getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(byte[] logo) {
         this.logo = logo;
     }
 }

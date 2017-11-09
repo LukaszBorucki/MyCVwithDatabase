@@ -47,4 +47,37 @@ public interface Database {
     void saveSkill(Skill skill);
 
 
+    List<Education> getAllEducationDataByLanguage(String language);
+
+    List<Hobbies> getAllHobbiesDataByLanguage();
+
+    List<Skill> getAllSkillTechnology();
+
+    List<Skill> getAllSkillTraits();
+
+    List<ForeignLanguage> getAllForeignLanguage();
+
+    ExperienceBranch getBranchByBranchId(int branchId);
+
+    List<ExperiencePeriod> getAllByCompanyIdByLanguage(int id, String appLanguage);
+
+    List<ExperienceProject> getAllByCompanyId(int id);
+
+    List<ExperienceCompany> getAllExperienceCompany();
+
+    void truncateEducation();
+
+    void truncateExperienceBranch();
+
+    void truncateExperienceCompany();
+
+    void truncateExperiencePeriod();
+
+    void truncateExperienceProject();
+
+    void truncateExperienceForeignLanguage();
+
+    void truncateExperienceHobbies();
+
+    void truncateExperienceSkill();
 }

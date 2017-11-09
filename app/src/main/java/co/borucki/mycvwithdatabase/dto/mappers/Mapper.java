@@ -1,8 +1,13 @@
 package co.borucki.mycvwithdatabase.dto.mappers;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import co.borucki.mycvwithdatabase.LocaleHelper;
 import co.borucki.mycvwithdatabase.dto.EducationDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceCompanyDTO;
@@ -58,7 +63,7 @@ public class Mapper {
                 , myEducationDTO.getThesisTopic()
                 , myEducationDTO.getAppliedTechnologies()
                 , myEducationDTO.getLanguage()
-                , myEducationDTO.getLogotype());
+                , LocaleHelper.decodeImageFromStringToByteArray(myEducationDTO.getLogotype()));
 
     }
 
@@ -75,7 +80,7 @@ public class Mapper {
                     , myEducationDTO.getThesisTopic()
                     , myEducationDTO.getAppliedTechnologies()
                     , myEducationDTO.getLanguage()
-                    , myEducationDTO.getLogotype()));
+                    , LocaleHelper.decodeImageFromStringToByteArray(myEducationDTO.getLogotype())));
         }
 
         return resultList;
@@ -109,7 +114,7 @@ public class Mapper {
             hobbies.add(new Hobbies(hobbiesDTO.getId()
                     , hobbiesDTO.getNamePl()
                     , hobbiesDTO.getNameEn()
-                    , hobbiesDTO.getLogo()));
+                    , LocaleHelper.decodeImageFromStringToByteArray(hobbiesDTO.getLogo())));
         }
 
         return hobbies;
@@ -149,7 +154,7 @@ public class Mapper {
                     new ExperienceCompany(companyDTO.getId()
                             , companyDTO.getBranchId()
                             , companyDTO.getName()
-                            , companyDTO.getLogotype())
+                            , LocaleHelper.decodeImageFromStringToByteArray(companyDTO.getLogotype()))
             );
         }
         return experienceCompanies;
@@ -159,7 +164,7 @@ public class Mapper {
         return new ExperienceCompany(experienceCompanyDTO.getId()
                 , experienceCompanyDTO.getBranchId()
                 , experienceCompanyDTO.getName()
-                , experienceCompanyDTO.getLogotype());
+                , LocaleHelper.decodeImageFromStringToByteArray(experienceCompanyDTO.getLogotype()));
     }
 
     public static List<ExperiencePeriod> fromExperiencePeriodDTOToExperiencePeriod(List<ExperiencePeriodDTO> experiencePeriodDTOS) {
@@ -210,7 +215,7 @@ public class Mapper {
                     , foreignLanguageDTO.getNamePl()
                     , foreignLanguageDTO.getNameEn()
                     , foreignLanguageDTO.getLevel()
-                    , foreignLanguageDTO.getLogo()));
+                    , LocaleHelper.decodeImageFromStringToByteArray(foreignLanguageDTO.getLogo())));
         }
         return foreignLanguages;
     }
@@ -220,7 +225,7 @@ public class Mapper {
                 , foreignLanguageDTO.getNamePl()
                 , foreignLanguageDTO.getNameEn()
                 , foreignLanguageDTO.getLevel()
-                , foreignLanguageDTO.getLogo());
+                , LocaleHelper.decodeImageFromStringToByteArray(foreignLanguageDTO.getLogo()));
     }
 
     public static List<Skill> fromSkillDTOToSkill(List<SkillDTO> skillDTOS) {

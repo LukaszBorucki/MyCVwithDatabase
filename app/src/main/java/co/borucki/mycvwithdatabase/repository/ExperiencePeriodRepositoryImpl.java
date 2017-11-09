@@ -30,4 +30,14 @@ public class ExperiencePeriodRepositoryImpl implements ExperiencePeriodRepositor
     public void saveExperiencePeriod(List<ExperiencePeriod> experiencePeriodList) {
         mDatabase.saveExperiencePeriod(experiencePeriodList);
     }
+
+    @Override
+    public List<ExperiencePeriod> getAllByCompanyIdByLanguage(int id, String appLanguage) {
+        return mDatabase.getAllByCompanyIdByLanguage(id, appLanguage);
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperiencePeriod();
+    }
 }

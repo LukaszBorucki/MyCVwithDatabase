@@ -5,25 +5,37 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 
 import java.util.Locale;
+
+import co.borucki.mycvwithdatabase.asyncTask.GetAllEducation;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceBranch;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceCompany;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperiencePeriod;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceProject;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllForeignLanguage;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllHobbies;
+import co.borucki.mycvwithdatabase.asyncTask.GetAllSkill;
 
 
 public class LocaleHelper {
 
-    public static boolean isOnLine(Context context){
-        ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService (Context.CONNECTIVITY_SERVICE);
+    public static boolean isOnLine(Context context) {
+        ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (conMgr.getActiveNetworkInfo() != null
                 && conMgr.getActiveNetworkInfo().isAvailable()
-                && conMgr.getActiveNetworkInfo().isConnected()){
+                && conMgr.getActiveNetworkInfo().isConnected()) {
 
             try {
                 Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
                 int returnVal = p1.waitFor();
-                return  (returnVal==0);
+                return (returnVal == 0);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -31,7 +43,7 @@ public class LocaleHelper {
 
 
         }
-            return false;
+        return false;
     }
 
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
@@ -101,5 +113,29 @@ public class LocaleHelper {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         return context;
+    }
+
+    public static void importDataInBackground() {
+        new GetAllEducation().execute();
+        new GetAllExperienceBranch().execute();
+        new GetAllExperienceCompany().execute();
+        new GetAllExperiencePeriod().execute();
+        new GetAllExperienceProject().execute();
+        new GetAllForeignLanguage().execute();
+        new GetAllHobbies().execute();
+        new GetAllSkill().execute();
+    }
+
+    public static byte[] decodeImageFromStringToByteArray(String image) {
+        return Base64.decode(image, Base64.DEFAULT);
+    }
+
+    public static Bitmap decodeImageFromByteArrayToBitmap(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
+    public static Bitmap decodeImageFromStringToBitmap(String image) {
+        byte[] byteArrayImage = decodeImageFromStringToByteArray(image);
+        return decodeImageFromByteArrayToBitmap(byteArrayImage);
     }
 }

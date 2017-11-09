@@ -27,4 +27,14 @@ public class EducationRepositoryImpl implements EducationRepository {
     public void saveEducation(Education education) {
         mDatabase.saveEducation(education);
     }
+
+    @Override
+    public List<Education> getAllEducationDataByLanguage(String language) {
+        return mDatabase.getAllEducationDataByLanguage(language);
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateEducation();
+    }
 }

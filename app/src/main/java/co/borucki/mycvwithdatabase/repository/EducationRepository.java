@@ -10,4 +10,8 @@ public interface EducationRepository {
     void saveEducation(List<Education> educationList);
 
     void saveEducation(Education education);
+
+    List<Education> getAllEducationDataByLanguage(String language);
+
+    void truncate();
 }

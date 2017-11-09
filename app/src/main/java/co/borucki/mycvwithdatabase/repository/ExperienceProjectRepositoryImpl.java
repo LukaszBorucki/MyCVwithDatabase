@@ -29,4 +29,14 @@ public class ExperienceProjectRepositoryImpl implements ExperienceProjectReposit
     public void saveExperienceProject(List<ExperienceProject> experienceProjectList) {
         mDatabase.saveExperienceProject(experienceProjectList);
     }
+
+    @Override
+    public List<ExperienceProject> getAllByCompanyId(int id) {
+        return mDatabase.getAllByCompanyId(id);
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceProject();
+    }
 }

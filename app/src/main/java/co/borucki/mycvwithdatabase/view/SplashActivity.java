@@ -102,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void setSplashActivityData() {
-        setImageFromString(mRepository.getPhoto());
+        mImage.setImageBitmap(LocaleHelper.decodeImageFromStringToBitmap(mRepository.getPhoto()));
         mPhoneNo.setText(mRepository.getPhone());
         mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
         if (mAccessPermission.getAppLanguage() == null || mAccessPermission.getAppLanguage().equals("")) {
@@ -209,6 +209,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void runMainScrees() {
+        LocaleHelper.importDataInBackground();
         new CountDownTimer(15000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -225,7 +226,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void navigateToMenuScreen() {
-        importDataInBackground();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
@@ -375,13 +376,13 @@ public class SplashActivity extends AppCompatActivity {
 
             mNameAndSurname.setText(mRepository.getName() + " " + mRepository.getSurname());
             mPhoneNo.setText(mRepository.getPhone());
-            setImageFromString(personalData.getPhoto());
+            mImage.setImageBitmap(LocaleHelper.decodeImageFromStringToBitmap(mRepository.getPhoto()));
             if (mAccessPermission.getAppLanguage().equals("pl")) {
                 mAbout.setText(personalData.getAboutPl());
             } else {
                 mAbout.setText(personalData.getAboutEn());
             }
-            importDataInBackground();
+            LocaleHelper.importDataInBackground();
             runMainScrees();
         }
 
@@ -391,38 +392,9 @@ public class SplashActivity extends AppCompatActivity {
                     + mAccessPermission.getAccessMail()
                     + "&pass="
                     + MD5Encryption.encrypt(mAccessPermission.getAccessPassword());
-
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
-
             return restTemplate.getForObject(link, PersonalDataDTO.class);
-
         }
-    }
-
-    private void importDataInBackground() {
-        new GetAllEducation().execute();
-        new GetAllExperienceBranch().execute();
-        new GetAllExperienceCompany().execute();
-        new GetAllExperiencePeriod().execute();
-        new GetAllExperienceProject().execute();
-        new GetAllForeignLanguage().execute();
-        new GetAllHobbies().execute();
-        new GetAllSkill().execute();
-    }
-
-
-    public void setImageFromString(String bitmap) {
-        if (!bitmap.equalsIgnoreCase("")) {
-            Bitmap bitmapDecode = decodeBase64(bitmap);
-
-            mImage.setImageBitmap(bitmapDecode);
-        }
-
-    }
-
-    public static Bitmap decodeBase64(String input) {
-        byte[] decodedByte = Base64.decode(input, 0);
-        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 }
