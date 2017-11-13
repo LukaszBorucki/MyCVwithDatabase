@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,6 @@ import butterknife.ButterKnife;
 import co.borucki.mycvwithdatabase.LocaleHelper;
 import co.borucki.mycvwithdatabase.R;
 import co.borucki.mycvwithdatabase.model.Education;
-
 
 
 public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.MyEducationViewHolder> {

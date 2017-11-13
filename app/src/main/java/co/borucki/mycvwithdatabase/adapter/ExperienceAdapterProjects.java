@@ -3,6 +3,7 @@ package co.borucki.mycvwithdatabase.adapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,9 @@ public class ExperienceAdapterProjects extends RecyclerView.Adapter<ExperienceAd
         ExperienceProject project = mData.get(position);
         Resources res = holder.itemView.getContext().getResources();
         if(mApplicationAccessPermission.getAppLanguage().equals("pl")) {
-            holder.mProjectText.setText(project.getDescriptionPl());
+            holder.mProjectText.setText(Html.fromHtml(project.getDescriptionPl()));
         }else{
-            holder.mProjectText.setText(project.getDescriptionEn());
+            holder.mProjectText.setText(Html.fromHtml(project.getDescriptionEn()));
         }
     }
 
