@@ -14,6 +14,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import java.util.List;
 
+import co.borucki.mycvwithdatabase.model.Additional;
 import co.borucki.mycvwithdatabase.model.Education;
 import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.ExperienceCompany;
@@ -35,6 +36,7 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     private RuntimeExceptionDao<ForeignLanguage, Integer> mForeignLanguageDao;
     private RuntimeExceptionDao<Hobbies, Integer> mHobbiesDao;
     private RuntimeExceptionDao<Skill, Integer> mSkillDao;
+    private RuntimeExceptionDao<Additional, Integer> mAdditionalDao;
 
     public DatabaseOrmImpl(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,6 +48,7 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
         mForeignLanguageDao = getRuntimeExceptionDao(ForeignLanguage.class);
         mHobbiesDao = getRuntimeExceptionDao(Hobbies.class);
         mSkillDao = getRuntimeExceptionDao(Skill.class);
+        mAdditionalDao = getRuntimeExceptionDao(Additional.class);
     }
 
     @Override
@@ -59,7 +62,7 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
             TableUtils.createTableIfNotExists(connectionSource, ForeignLanguage.class);
             TableUtils.createTableIfNotExists(connectionSource, Hobbies.class);
             TableUtils.createTableIfNotExists(connectionSource, Skill.class);
-
+            TableUtils.createTableIfNotExists(connectionSource, Additional.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -242,7 +245,7 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
-    public void truncateExperienceForeignLanguage() {
+    public void truncateForeignLanguage() {
         mForeignLanguageDao.delete(mForeignLanguageDao.queryForAll());
     }
 
@@ -264,7 +267,7 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
-    public void truncateExperienceHobbies() {
+    public void truncateHobbies() {
         mHobbiesDao.delete(mHobbiesDao.queryForAll());
     }
 
@@ -313,7 +316,29 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
-    public void truncateExperienceSkill() {
+    public void truncateSkill() {
         mSkillDao.delete(mSkillDao.queryForAll());
+    }
+
+    @Override
+    public void saveAdditional(Additional additional) {
+        mAdditionalDao.createOrUpdate(additional);
+    }
+
+    @Override
+    public void saveAdditional(List<Additional> additionalList) {
+        for (Additional additional : additionalList) {
+            mAdditionalDao.createOrUpdate(additional);
+        }
+    }
+
+    @Override
+    public List<Additional> getAllAdditional() {
+        return mAdditionalDao.queryForAll();
+    }
+
+    @Override
+    public void truncateAdditional() {
+        mAdditionalDao.delete(mAdditionalDao.queryForAll());
     }
 }
