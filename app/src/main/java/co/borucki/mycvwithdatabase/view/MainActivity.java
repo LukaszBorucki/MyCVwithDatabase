@@ -26,6 +26,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.borucki.mycvwithdatabase.LocaleHelper;
 import co.borucki.mycvwithdatabase.R;
+import co.borucki.mycvwithdatabase.model.Additional;
+import co.borucki.mycvwithdatabase.repository.AdditionalRepository;
+import co.borucki.mycvwithdatabase.repository.AdditionalRepositoryImpl;
 import co.borucki.mycvwithdatabase.repository.EducationRepository;
 import co.borucki.mycvwithdatabase.repository.EducationRepositoryImpl;
 import co.borucki.mycvwithdatabase.repository.ExperienceBranchRepository;
@@ -46,6 +49,7 @@ import co.borucki.mycvwithdatabase.repository.SkillRepository;
 import co.borucki.mycvwithdatabase.repository.SkillRepositoryImpl;
 import co.borucki.mycvwithdatabase.security.ApplicationAccessPermission;
 import co.borucki.mycvwithdatabase.security.ApplicationAccessPermissionImpl;
+import co.borucki.mycvwithdatabase.view.fragments.AdditionalFragment;
 import co.borucki.mycvwithdatabase.view.fragments.ContactFragment;
 import co.borucki.mycvwithdatabase.view.fragments.EducationFragment;
 import co.borucki.mycvwithdatabase.view.fragments.ExperienceFragment;
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ForeignLanguageRepository mForeignLanguageRepo = ForeignLanguageRepositoryImpl.getInstance();
     private HobbiesRepository mHobbiesRepo = HobbiesRepositoryImpl.getInstance();
     private SkillRepository mSkillRepo = SkillRepositoryImpl.getInstance();
+    private AdditionalRepository mAdditionalRepo = AdditionalRepositoryImpl.getInstance();
     @BindView(R.id.navigationToolBar)
     Toolbar navigationToolBar;
     @BindView(R.id.navigationView)
@@ -229,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mForeignLanguageRepo.truncate();
         mHobbiesRepo.truncate();
         mSkillRepo.truncate();
+        mAdditionalRepo.truncate();
     }
 
     @Override
@@ -283,6 +289,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = HobbiesFragment.newInstance();
                 break;
 
+            case R.id.navigationMenuAdditional:
+                fragment = AdditionalFragment.newInstance();
+                break;
             case R.id.navigationMenuSendMail:
                 fragment = SendMailFragment.newInstance();
                 break;
