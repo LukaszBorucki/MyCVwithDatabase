@@ -6,7 +6,6 @@ import java.util.List;
 import co.borucki.mycvwithdatabase.AndroidApplication;
 import co.borucki.mycvwithdatabase.database.Database;
 import co.borucki.mycvwithdatabase.model.Additional;
-import co.borucki.mycvwithdatabase.model.Hobbies;
 
 public class AdditionalRepositoryImpl implements AdditionalRepository {
     private static AdditionalRepositoryImpl mInstance = new AdditionalRepositoryImpl();

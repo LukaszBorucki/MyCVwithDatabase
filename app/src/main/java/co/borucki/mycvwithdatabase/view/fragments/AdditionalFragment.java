@@ -13,17 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import co.borucki.mycvwithdatabase.R;
-import co.borucki.mycvwithdatabase.adapter.HobbiesAdapter;
+import co.borucki.mycvwithdatabase.adapter.AdditionalAdapter;
 import co.borucki.mycvwithdatabase.repository.AdditionalRepository;
 import co.borucki.mycvwithdatabase.repository.AdditionalRepositoryImpl;
-import co.borucki.mycvwithdatabase.repository.HobbiesRepository;
-import co.borucki.mycvwithdatabase.repository.HobbiesRepositoryImpl;
 
 
 public class AdditionalFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private HobbiesAdapter mAdditionalAdapter;
-    private ProgressDialog progressDialog;
+    private AdditionalAdapter mAdditionalAdapter;
     private AdditionalRepository mAdditionalRepository = AdditionalRepositoryImpl.getInstance();
 
     public AdditionalFragment() {
@@ -47,13 +44,14 @@ public class AdditionalFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         mRecyclerView = view.findViewById(R.id.additional_fragment_list_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), linearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-
+        mAdditionalAdapter = new AdditionalAdapter(getActivity());
+        mRecyclerView.setAdapter(mAdditionalAdapter);
+        mAdditionalAdapter.setData(mAdditionalRepository.getAllAdditional());
 
     }
 }
