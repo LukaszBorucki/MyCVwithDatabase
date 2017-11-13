@@ -9,4 +9,8 @@ public interface ExperienceCompanyRepository {
     void saveExperienceCompany(ExperienceCompany experienceCompany);
 
     void saveExperienceCompany(List<ExperienceCompany> experienceCompanyList);
+
+    List<ExperienceCompany> getAllExperienceCompany();
+
+    void truncate();
 }

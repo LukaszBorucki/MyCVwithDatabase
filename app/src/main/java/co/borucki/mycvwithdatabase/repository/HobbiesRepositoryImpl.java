@@ -31,4 +31,14 @@ public class HobbiesRepositoryImpl implements HobbiesRepository {
     public void saveHobbies(Hobbies hobbies) {
         mDatabase.saveHobbies(hobbies);
     }
+
+    @Override
+    public List<Hobbies> getAllHobbiesDataByLanguage() {
+        return mDatabase.getAllHobbiesDataByLanguage();
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceHobbies();
+    }
 }

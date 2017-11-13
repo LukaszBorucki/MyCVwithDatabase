@@ -31,4 +31,14 @@ public class ForeignLanguageRepositoryImpl implements ForeignLanguageRepository 
     public void saveForeignLanguage(ForeignLanguage foreignLanguage) {
         mDatabase.saveForeignLanguage(foreignLanguage);
     }
+
+    @Override
+    public List<ForeignLanguage> getAllForeignLanguage() {
+        return mDatabase.getAllForeignLanguage();
+    }
+
+    @Override
+    public void truncate() {
+        mDatabase.truncateExperienceForeignLanguage();
+    }
 }

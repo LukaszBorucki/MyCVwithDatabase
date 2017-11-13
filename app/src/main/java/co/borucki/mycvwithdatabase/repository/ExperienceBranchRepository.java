@@ -9,4 +9,7 @@ public interface ExperienceBranchRepository {
 
     void saveExperienceBranch(List<ExperienceBranch> experienceBranchList);
 
+    ExperienceBranch getBranchByBranchId(int branchId);
+
+    void truncate();
 }

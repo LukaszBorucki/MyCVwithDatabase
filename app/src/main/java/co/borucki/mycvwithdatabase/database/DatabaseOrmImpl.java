@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -82,6 +85,27 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
+    public List<Education> getAllEducationDataByLanguage(String language) {
+        QueryBuilder<Education, Integer> qb = mEducationDao.queryBuilder();
+        Where where = qb.where();
+        try {
+            where.eq("language", language);
+            qb.orderBy("id", true);
+            return qb.query();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void truncateEducation() {
+        mEducationDao.delete(mEducationDao.queryForAll());
+    }
+
+    @Override
     public void saveExperienceBranch(List<ExperienceBranch> experienceBranchList) {
         for (ExperienceBranch experienceBranch : experienceBranchList) {
             mExperienceBranchDao.createOrUpdate(experienceBranch);
@@ -91,6 +115,30 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     @Override
     public void saveExperienceBranch(ExperienceBranch experienceBranch) {
         mExperienceBranchDao.createOrUpdate(experienceBranch);
+    }
+
+    @Override
+    public ExperienceBranch getBranchByBranchId(int branchId) {
+        QueryBuilder<ExperienceBranch, Integer> qb = mExperienceBranchDao.queryBuilder();
+        Where where = qb.where();
+        try {
+            where.eq("id", branchId);
+            qb.groupBy("id");
+            return qb.query().get(0);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+//        return (ExperienceBranch) mExperienceBranchDao.queryForEq("id", branchId);
+
+    }
+
+    @Override
+    public void truncateExperienceBranch() {
+        mExperienceBranchDao.delete(mExperienceBranchDao.queryForAll());
     }
 
     @Override
@@ -106,6 +154,16 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
+    public List<ExperienceCompany> getAllExperienceCompany() {
+        return mExperienceCompanyDao.queryForAll();
+    }
+
+    @Override
+    public void truncateExperienceCompany() {
+        mExperienceCompanyDao.delete(mExperienceCompanyDao.queryForAll());
+    }
+
+    @Override
     public void saveExperiencePeriod(ExperiencePeriod experiencePeriod) {
         mExperiencePeriodDao.createOrUpdate(experiencePeriod);
     }
@@ -115,6 +173,32 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
         for (ExperiencePeriod experiencePeriod : experiencePeriodList) {
             mExperiencePeriodDao.createOrUpdate(experiencePeriod);
         }
+    }
+
+    @Override
+    public List<ExperiencePeriod> getAllByCompanyIdByLanguage(int id, String appLanguage) {
+        QueryBuilder<ExperiencePeriod, Integer> qb = mExperiencePeriodDao.queryBuilder();
+        Where where = qb.where();
+        try {
+
+            where.and(
+                    where.eq("companyId", id),
+                    where.eq("language", appLanguage)
+            );
+
+            qb.orderBy("id", true);
+            return qb.query();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void truncateExperiencePeriod() {
+        mExperiencePeriodDao.delete(mExperiencePeriodDao.queryForAll());
     }
 
     @Override
@@ -130,6 +214,16 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
+    public List<ExperienceProject> getAllByCompanyId(int id) {
+        return mExperienceProjectDao.queryForEq("companyId", id);
+    }
+
+    @Override
+    public void truncateExperienceProject() {
+        mExperienceProjectDao.delete(mExperienceProjectDao.queryForAll());
+    }
+
+    @Override
     public void saveForeignLanguage(List<ForeignLanguage> foreignLanguageList) {
         for (ForeignLanguage foreignLanguage : foreignLanguageList) {
             mForeignLanguageDao.createOrUpdate(foreignLanguage);
@@ -139,6 +233,17 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     @Override
     public void saveForeignLanguage(ForeignLanguage foreignLanguage) {
         mForeignLanguageDao.createOrUpdate(foreignLanguage);
+    }
+
+    @Override
+    public List<ForeignLanguage> getAllForeignLanguage() {
+        return mForeignLanguageDao.queryForAll();
+
+    }
+
+    @Override
+    public void truncateExperienceForeignLanguage() {
+        mForeignLanguageDao.delete(mForeignLanguageDao.queryForAll());
     }
 
     @Override
@@ -154,6 +259,16 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     }
 
     @Override
+    public List<Hobbies> getAllHobbiesDataByLanguage() {
+        return mHobbiesDao.queryForAll();
+    }
+
+    @Override
+    public void truncateExperienceHobbies() {
+        mHobbiesDao.delete(mHobbiesDao.queryForAll());
+    }
+
+    @Override
     public void saveSkill(List<Skill> skillList) {
         for (Skill skill : skillList) {
             mSkillDao.createOrUpdate(skill);
@@ -163,5 +278,42 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     @Override
     public void saveSkill(Skill skill) {
         mSkillDao.createOrUpdate(skill);
+    }
+
+    @Override
+    public List<Skill> getAllSkillTechnology() {
+        QueryBuilder<Skill, Integer> qb = mSkillDao.queryBuilder();
+        Where where = qb.where();
+        try {
+            where.eq("type", "technology");
+            qb.orderBy("id", true);
+            return qb.query();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Skill> getAllSkillTraits() {
+        QueryBuilder<Skill, Integer> qb = mSkillDao.queryBuilder();
+        Where where = qb.where();
+        try {
+            where.eq("type", "traits");
+            qb.orderBy("id", true);
+            return qb.query();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public void truncateExperienceSkill() {
+        mSkillDao.delete(mSkillDao.queryForAll());
     }
 }

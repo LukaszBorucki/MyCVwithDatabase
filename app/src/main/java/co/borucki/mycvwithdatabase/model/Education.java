@@ -1,5 +1,8 @@
 package co.borucki.mycvwithdatabase.model;
 
+import android.graphics.Bitmap;
+
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -25,15 +28,15 @@ public class Education {
     private String appliedTechnologies;
     @DatabaseField(columnName = "language")
     private String language;
-    @DatabaseField(columnName = "logotype")
-    private String logotype;
+    @DatabaseField(columnName = "logotype", dataType = DataType.SERIALIZABLE)
+    private byte[] logotype;
 
     public Education() {
     }
 
     public Education(int id, String startDate, String endDate, String academy, String faculty
             , String course, String levelOfEducation, String thesisTopic, String appliedTechnologies
-            , String language, String logotype) {
+            , String language, byte[] logotype) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -127,11 +130,11 @@ public class Education {
         this.language = language;
     }
 
-    public String getLogotype() {
+    public byte[] getLogotype() {
         return logotype;
     }
 
-    public void setLogotype(String logotype) {
+    public void setLogotype(byte[] logotype) {
         this.logotype = logotype;
     }
 }

@@ -9,4 +9,10 @@ public interface SkillRepository {
     void saveSkill(List<Skill> skillList);
 
     void saveSkill(Skill skill);
+
+    List<Skill> getAllSkillTechnology();
+
+    List<Skill> getAllSkillTraits();
+
+    void truncate();
 }

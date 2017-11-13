@@ -9,4 +9,8 @@ public interface HobbiesRepository {
     void saveHobbies(List<Hobbies> hobbiesList);
 
     void saveHobbies(Hobbies hobbies);
+
+    List<Hobbies> getAllHobbiesDataByLanguage();
+
+    void truncate();
 }

@@ -3,6 +3,8 @@ package co.borucki.mycvwithdatabase.persistence;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Arrays;
+
 
 public class MyCVSharedPreferences {
     private static final String PERSONAL_DATA_SHARED_PREFERENCES = "personalDatar";
@@ -26,7 +28,7 @@ public class MyCVSharedPreferences {
     private static final String APP_LANGUAGE = "language";
     private static final String ABOUT_PL = "about_pl";
     private static final String ABOUT_EN = "about_en";
-    private static final String MAIL_MESSAGE="mail_message";
+    private static final String MAIL_MESSAGE = "mail_message";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -230,7 +232,7 @@ public class MyCVSharedPreferences {
     }
 
     public String getAboutPl() {
-        return mSharedPreferences.getString(ABOUT_PL,"N/A");
+        return mSharedPreferences.getString(ABOUT_PL, "N/A");
     }
 
     public void setAboutEn(String aboutEn) {
@@ -241,7 +243,7 @@ public class MyCVSharedPreferences {
     }
 
     public String getAboutEn() {
-        return  mSharedPreferences.getString(ABOUT_EN,"N/A");
+        return mSharedPreferences.getString(ABOUT_EN, "N/A");
     }
 
     public String getMessageText() {
