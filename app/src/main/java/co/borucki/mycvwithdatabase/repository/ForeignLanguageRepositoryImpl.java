@@ -39,6 +39,6 @@ public class ForeignLanguageRepositoryImpl implements ForeignLanguageRepository 
 
     @Override
     public void truncate() {
-        mDatabase.truncateExperienceForeignLanguage();
+        mDatabase.truncateForeignLanguage();
     }
 }

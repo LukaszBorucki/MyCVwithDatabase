@@ -44,6 +44,6 @@ public class SkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void truncate() {
-        mDatabase.truncateExperienceSkill();
+        mDatabase.truncateSkill();
     }
 }

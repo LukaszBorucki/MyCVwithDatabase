@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.mycvwithdatabase.LocaleHelper;
+import co.borucki.mycvwithdatabase.dto.AdditionalDTO;
 import co.borucki.mycvwithdatabase.dto.EducationDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceBranchDTO;
 import co.borucki.mycvwithdatabase.dto.ExperienceCompanyDTO;
@@ -18,6 +19,7 @@ import co.borucki.mycvwithdatabase.dto.HobbiesDTO;
 import co.borucki.mycvwithdatabase.dto.MailUserAuthorizationDTO;
 import co.borucki.mycvwithdatabase.dto.PersonalDataDTO;
 import co.borucki.mycvwithdatabase.dto.SkillDTO;
+import co.borucki.mycvwithdatabase.model.Additional;
 import co.borucki.mycvwithdatabase.model.Education;
 import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.ExperienceCompany;
@@ -240,5 +242,24 @@ public class Mapper {
         }
 
         return skills;
+    }
+
+    public static List<Additional> fromAdditionalDTOToAdditional(List<AdditionalDTO> additionalDTOS) {
+        List<Additional> additionals = new ArrayList<>();
+        for (AdditionalDTO additionalDTO : additionalDTOS) {
+            additionals.add(new Additional(additionalDTO.getId()
+                    , additionalDTO.getDate()
+                    , additionalDTO.getNamePl()
+                    , additionalDTO.getNameEn()));
+        }
+
+        return additionals;
+    }
+
+    public static Additional fromAdditionalDTOToAdditional(AdditionalDTO additionalDTO) {
+        return new Additional(additionalDTO.getId()
+                , additionalDTO.getDate()
+                , additionalDTO.getNamePl()
+                , additionalDTO.getNameEn());
     }
 }

@@ -116,7 +116,6 @@ public class SplashActivity extends AppCompatActivity {
             }
 
         } else {
-            mAccessPermission.setAppLanguage("pl");
             LocaleHelper.setLocale(this, mAccessPermission.getAppLanguage());
         }
 

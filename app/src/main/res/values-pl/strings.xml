@@ -46,4 +46,5 @@ z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: D
     <string name="send_mail_subject">Wiadomość z MyCV Api od:</string>
     <string name="message_sent">Wiadomość wysłana</string>
     <string name="message_not_send">Wiadomość nie została wysłana.\nProszę spróbować ponownie później.</string>
+    <string name="additional">#kursy #szkolenia #certyfikaty</string>
 </resources>

@@ -39,6 +39,6 @@ public class HobbiesRepositoryImpl implements HobbiesRepository {
 
     @Override
     public void truncate() {
-        mDatabase.truncateExperienceHobbies();
+        mDatabase.truncateHobbies();
     }
 }

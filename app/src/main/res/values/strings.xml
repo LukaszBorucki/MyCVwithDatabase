@@ -45,4 +45,5 @@
     <string name="send_mail_subject">Message from MyCV Api from:</string>
     <string name="message_sent">Message sent</string>
     <string name="message_not_send">Message not sent.\\\\nPlease try again later.</string>
+    <string name="additional">#courses #training #certificates</string>
 </resources>

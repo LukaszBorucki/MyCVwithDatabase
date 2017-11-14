@@ -14,6 +14,7 @@ import android.util.Base64;
 
 import java.util.Locale;
 
+import co.borucki.mycvwithdatabase.asyncTask.GetAllAdditional;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllEducation;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceBranch;
 import co.borucki.mycvwithdatabase.asyncTask.GetAllExperienceCompany;
@@ -124,6 +125,7 @@ public class LocaleHelper {
         new GetAllForeignLanguage().execute();
         new GetAllHobbies().execute();
         new GetAllSkill().execute();
+        new GetAllAdditional().execute();
     }
 
     public static byte[] decodeImageFromStringToByteArray(String image) {

@@ -21,6 +21,11 @@
         android:icon="@drawable/ic_foreign_languages_black_24dp"
         android:title="@string/menu_foreign_languages" />
     <item
+        android:id="@+id/navigationMenuAdditional"
+        android:icon="@drawable/ic_additional_black_24dp"
+        android:title="@string/additional"
+        />
+    <item
         android:id="@+id/navigationMenuHobby"
         android:icon="@drawable/ic_bike_black_24dp"
         android:title="@string/hobby" />

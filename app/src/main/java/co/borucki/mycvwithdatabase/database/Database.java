@@ -3,6 +3,7 @@ package co.borucki.mycvwithdatabase.database;
 
 import java.util.List;
 
+import co.borucki.mycvwithdatabase.model.Additional;
 import co.borucki.mycvwithdatabase.model.Education;
 import co.borucki.mycvwithdatabase.model.ExperienceBranch;
 import co.borucki.mycvwithdatabase.model.ExperienceCompany;
@@ -46,6 +47,10 @@ public interface Database {
 
     void saveSkill(Skill skill);
 
+    void saveAdditional(Additional additional);
+
+    void saveAdditional(List<Additional> additionalList);
+
 
     List<Education> getAllEducationDataByLanguage(String language);
 
@@ -65,6 +70,8 @@ public interface Database {
 
     List<ExperienceCompany> getAllExperienceCompany();
 
+    List<Additional> getAllAdditional();
+
     void truncateEducation();
 
     void truncateExperienceBranch();
@@ -75,9 +82,11 @@ public interface Database {
 
     void truncateExperienceProject();
 
-    void truncateExperienceForeignLanguage();
+    void truncateForeignLanguage();
 
-    void truncateExperienceHobbies();
+    void truncateHobbies();
 
-    void truncateExperienceSkill();
+    void truncateSkill();
+
+    void truncateAdditional();
 }
